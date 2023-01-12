@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="NavFooter.master.cs" Inherits="NavFooter" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <link rel="stylesheet" href="CSS/Home_style.css">
+    <link rel="stylesheet" href="CSS/Responsive-Home.css">
+    <!-- normalize Css -->
+    <link rel="stylesheet" href="CSS/normaliz.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="CSS/all.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    
+   <form id="form1" runat="server">
+    <div class="header">
+        <div class="container">
+            <a id="logo" href="#logo" class="logo">{ }
+                <h4 class="h-logo">PaCoders</h4>
+            </a>
+            
+            <ul class="main-nav">
+                <li><a href="index.aspx">Home</a></li>
+                <li><a href="projects.aspx">Projects</a></li>
+                <li><a href="Aboutus.aspx">About US</a></li>
+                <li><a href="ContactUs.aspx">Contact</a></li>
+                <%if (HttpContext.Current.Session["id"] != null)
+                    { %>
+                <li><a href="shop.aspx"><i class="fa-solid fa-crown"></i>Shop</a></li>
+                <%}%>
+            </ul>
+            <ul class="main-nav-log">
+                <%if (HttpContext.Current.Session["id"] == null)
+                    { %>
+                <li><a href="Signin-Signup.aspx">Log In</a></li>
+                <li><a class="singup" href="Signin-Signup.aspx">Sign Up</a></li>
+                <%}
+    else
+    { %>
+                <li><a href="UserProfile.aspx"><%=HttpContext.Current.Session["urname"] %></a></li>
+                <li><asp:Button runat="server" CssClass="singup" OnClick="logout_Click" Text="Logout" /></li>
+                <%} %>
+            </ul>
+        </div>
+      </div>
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+  
+        <footer id="footer">
+        <div class="containerr">
+            <div class="row">
+                <div class="col" id="company">
+                    <!-- <img src="images/logo.png" alt="" class="logo"> -->
+                    <h1>{ } PaCoders</h1>
+                    <p>
+                        We are specialized in designings, make your business a brand.
+                        Try our premium services.
+                    </p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="col" id="services">
+                    <h3>Services</h3>
+                    <div class="linkss">
+                        <a href="#">Illustration</a>
+                        <a href="#">Creatives</a>
+                        <a href="#">Poster Design</a>
+                        <a href="#">Card Design</a>
+                    </div>
+                </div>
+
+                <div class="col" id="useful-links">
+                    <h3>Links</h3>
+                    <div class="linkss">
+                        <a href="#">About</a>
+                        <a href="#">Services</a>
+                        <a href="#">Our Policy</a>
+                        <a href="#">Help</a>
+                    </div>
+                </div>
+
+                <div class="col" id="contact">
+                    <h3>Contact</h3>
+                    <div class="contact-details">
+                        <i class="fa fa-location"></i>
+                        <p>Tanta<br>
+                            Nagaa Hammadi <br>
+                            Hurghada
+                            <br>
+                            Aswan
+                        </p>
+                    </div>
+                    <div class="contact-details">
+                        <i class="fa fa-phone"></i>
+                        <p>+20 115 908 8065 <br>
+                            +20 102 275 2620 <br>
+                            +20 103 253 8555 <br>
+                            +20 127 800 3266
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form">
+                    <form action="">
+                        <input type="text" placeholder="Email here...">
+                        <button class="b"><i class="fa fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="JavaScript/Home.js"></script>
+        </form>
+
+</body>
+</html>
